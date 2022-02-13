@@ -121,6 +121,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.vx = otherSprite.vx * -3
     sprite.destroy(effects.hearts, 100)
+    otherSprite.setFlag(SpriteFlag.ShowPhysics, false)
+    otherSprite.setFlag(SpriteFlag.GhostThroughSprites, true)
     music.sonar.stop()
     music.pewPew.play()
     info.changeScoreBy(100)
