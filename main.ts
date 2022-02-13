@@ -116,6 +116,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     fruitgun = sprites.createProjectileFromSprite(fruitlist._pickRandom(), bobjp, 140, 0)
     fruitgun.startEffect(effects.coolRadial, 500)
     music.sonar.play()
+    fruitgun.setFlag(SpriteFlag.AutoDestroy, true)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.vx = otherSprite.vx * -3
@@ -361,6 +362,7 @@ let YCCA_Logo_Thing_Tiny = img`
     `
 bobjp = sprites.create(BobAndJP2_Contrasty_transp_tiny, SpriteKind.Player)
 bobjp.setPosition(16, 55)
+bobjp.setStayInScreen(true)
 controller.moveSprite(bobjp, 0, 100)
 info.setScore(0)
 info.setLife(3)
@@ -530,6 +532,7 @@ game.onUpdateInterval(1300, function () {
     200,
     true
     )
+    projectile.setFlag(SpriteFlag.AutoDestroy, true)
 })
 game.onUpdateInterval(1500, function () {
     bubs = sprites.create(img`
@@ -555,6 +558,7 @@ game.onUpdateInterval(1500, function () {
     bubs.scale = randint(0.2, 1)
     bubs.z = -5
     bubs.vy = randint(-10, -50)
+    bubs.setFlag(SpriteFlag.AutoDestroy, false)
 })
 game.onUpdateInterval(100, function () {
     mySign.x += randint(-2, 2)
@@ -563,4 +567,5 @@ game.onUpdateInterval(100, function () {
     if (mySign.scale < 0.4) {
         mySign.scale += 0.05
     }
+    mySign.setFlag(SpriteFlag.AutoDestroy, true)
 })
