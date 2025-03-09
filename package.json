@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "puppeteer": "^24.4.0",
+    "pxt-arcade": "^2.0.25"
+  }
+}
